@@ -1,2 +1,7 @@
 @import "variables";
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+.form-control:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
