@@ -1,5 +1,6 @@
-import { getPost, updatePost } from "../api/posts/index.mjs";
+import { getPost, updatePost, removePost } from "../api/posts/index.mjs";
 
+// This function is used to update a post
 export async function setUpdatePostFormListener() {
   const form = document.querySelector("#editPost");
 
@@ -8,6 +9,8 @@ export async function setUpdatePostFormListener() {
 
   if (form) {
     const button = form.querySelector("button");
+    const deleteButton = document.querySelector("#deletePost");
+
     button.disabled = true;
 
     const post = await getPost(id);
@@ -19,15 +22,26 @@ export async function setUpdatePostFormListener() {
 
     button.disabled = false;
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const form = event.target;
       const formData = new FormData(form);
       const post = Object.fromEntries(formData.entries());
       post.id = id;
 
-      // Send it to the API
-      updatePost(post);
+      // Send it to the API and let the user know it was updated
+      await updatePost(post);
+      window.alert("The post has been updated.");
+    });
+
+    // Adds the posibility to delete a post and confirm and alert message before redirecting to the home page
+    deleteButton.addEventListener("click", async () => {
+      const confirmation = window.confirm("Are you sure you want to delete this post?");
+      if (confirmation) {
+        await removePost(id);
+        window.alert("The post has been deleted.");
+        window.location.href = "/";
+      }
     });
   }
 }

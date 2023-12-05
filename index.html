@@ -13,30 +13,19 @@
     <header class="fixed-top">
       <nav class="navbar navbar-expand-lg bg-dark-subtle">
         <div class="container-fluid">
-          <a class="navbar-brand" href="">TechDiscuss</a>
+          <a class="navbar-brand" href="/">TechDiscuss</a>
         </div>
       </nav>
     </header>
-    <main>
-      <div class="container my-5 py-5">
-        <div class="row justify-content-center align-items-center" style="height: 100vh">
+    <main class="d-flex justify-content-center align-items-center min-vh-100">
+      <div class="container-fluid my-5 py-5">
+        <div class="row justify-content-center align-items-center">
           <div class="col-md-4">
-            <form class="needs-validation was-validated" action="/profile/index.html">
-              <h1 class="h3 mb-3 font-weight-normal">Please sign in to access the site</h1>
-              <label for="inputEmail" class="sr-only">Email address</label>
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" />
-              <div class="invalid-feedback">Enter a valid email address</div>
-              <label for="inputPassword" class="sr-only">Password</label>
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" minlength="8" />
-              <div class="invalid-feedback">Password must have 8 characters</div>
-              <div class="checkbox mb-3">
-                <label> <input type="checkbox" value="remember-me" /> Remember me </label>
-              </div>
-              <div class="d-flex justify-content-evenly">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                <a href="/profile/register/"><button class="btn btn-lg btn-secondary btn-block" type="button">Register</button></a>
-              </div>
-            </form>
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in or register your Noroff account to access the site</h1>
+            <div class="d-flex justify-content-evenly">
+              <a href="/profile/login/"><button class="btn btn-lg btn-primary btn-block">Sign in</button></a>
+              <a href="/profile/register/"><button class="btn btn-lg btn-secondary btn-block">Register</button></a>
+            </div>
           </div>
         </div>
       </div>
