@@ -40,7 +40,7 @@ export async function setUpdatePostFormListener() {
       if (confirmation) {
         await removePost(id);
         window.alert("The post has been deleted.");
-        window.location.href = "/";
+        window.location.href = "/posts";
       }
     });
   }
