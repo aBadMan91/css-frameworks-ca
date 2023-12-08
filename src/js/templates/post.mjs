@@ -1,3 +1,4 @@
+// This is a template for a single post
 export function postTemplate(postData) {
   const post = document.createElement("div");
   post.classList.add("post");
