@@ -22,7 +22,7 @@ async function viewPost() {
 // Call the function
 viewPost();
 
-function createHtml(post) {
+export function createHtml(post) {
   const heading = document.createElement("h1");
   heading.textContent = `${post.title}`;
   postContainer.appendChild(heading);
@@ -59,6 +59,4 @@ function createHtml(post) {
   const author = document.createElement("p");
   author.innerText = `Author: ${post.author.name}`;
   postContent.appendChild(author);
-
-  // Add more elements as needed
 }
