@@ -6,7 +6,7 @@ export async function viewPosts(sort = "newest") {
   const container = document.querySelector("#post");
 
   if (container) {
-    container.innerHTML = ""; // Clear existing posts
+    container.innerHTML = "";
     templates.renderPostTemplates(posts, container);
   }
 }

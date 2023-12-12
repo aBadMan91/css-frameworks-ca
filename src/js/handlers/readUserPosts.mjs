@@ -1,12 +1,12 @@
-import { getProfile } from "../api/profiles/index.mjs";
 import { load } from "../storage/index.mjs";
 import { authFetch } from "../api/authFetch.mjs";
 
+// this function fetches the posts from the api
 export async function fetchUserPosts() {
   const { name } = load("profile");
-  const profile = await getProfile(name);
+  // const profile = await getProfile(name);
 
-  console.log(profile);
+  // console.log(profile);
 
   const response = await authFetch(`https://api.noroff.dev/api/v1/social/profiles/${name}/posts`);
 
@@ -16,6 +16,7 @@ export async function fetchUserPosts() {
 
   const posts = await response.json();
 
+  // this is the container for the posts
   const postContainer = document.getElementById("post-container");
   posts.forEach((post) => {
     const postHtml = createHtml(post);
@@ -27,6 +28,7 @@ export async function fetchUserPosts() {
 
 fetchUserPosts();
 
+// this function creates the html for the posts
 function createHtml(posts) {
   const postContainer = document.createElement("div");
   postContainer.classList.add("post");
@@ -44,7 +46,17 @@ function createHtml(posts) {
   title.innerText = `${posts.title}`;
   title.style.textDecoration = "underline";
 
+  const editButton = document.createElement("button");
+  editButton.classList.add("btn", "btn-primary");
+  editButton.innerText = "Edit Post";
+  editButton.onclick = function (event) {
+    event.preventDefault();
+    window.location.href = `/post/edit/?id=${posts.id}`;
+  };
+  editButton.classList.add("edit-button");
+
   cardBody.appendChild(title);
+  cardBody.appendChild(editButton);
   link.appendChild(cardBody);
   postContainer.appendChild(link);
 

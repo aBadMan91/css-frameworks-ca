@@ -8,6 +8,8 @@ const id = params.get("id");
 
 const title = params.get("title");
 
+document.title = title;
+
 const url = `${API_SOCIAL_URL}/posts/${id}?_author=true&_comments=true&_reactions=true`;
 console.log(url);
 

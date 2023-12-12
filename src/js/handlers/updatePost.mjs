@@ -35,7 +35,6 @@ export async function setUpdatePostFormListener() {
     });
 
     // Adds the posibility to delete a post and confirm and alert message before redirecting to the home page
-    // You have to add the id to the query string (example ?id=9126) to delete a post
     deleteButton.addEventListener("click", async () => {
       const confirmation = window.confirm("Are you sure you want to delete this post?");
       if (confirmation) {
