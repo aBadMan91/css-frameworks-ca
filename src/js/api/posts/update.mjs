@@ -5,6 +5,7 @@ import { authFetch } from "../authFetch.mjs";
 const action = "/posts";
 const method = "put";
 
+// This function is used to update a post
 export async function updatePost(postData) {
   if (!postData.id) {
     throw new Error("Update requires a postID");

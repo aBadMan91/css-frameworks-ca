@@ -6,8 +6,6 @@ export async function fetchProfileData() {
   const { name } = load("profile");
   const profile = await getProfile(name);
 
-  console.log(profile);
-
   const profileContainer = document.getElementById("card-container");
   const profileHtml = createProfileHtml(profile);
   profileContainer.appendChild(profileHtml);

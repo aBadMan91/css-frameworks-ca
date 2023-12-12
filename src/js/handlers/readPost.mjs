@@ -14,14 +14,12 @@ const url = `${API_SOCIAL_URL}/posts/${id}?_author=true&_comments=true&_reaction
 console.log(url);
 
 async function viewPost() {
-  // Step 1: Get the post data
   const postData = await getPost(id);
   console.log(postData);
 
   createHtml(postData);
 }
 
-// Call the function
 viewPost();
 
 export function createHtml(post) {
@@ -30,17 +28,11 @@ export function createHtml(post) {
   postContainer.appendChild(heading);
 
   const headingTwo = document.createElement("h2");
-  // headingTwo.textContent = `Posted: ${post.created}`;
-  // postContainer.appendChild(headingTwo);
   const date = new Date(post.created);
   const options = { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" };
   const formattedDate = date.toLocaleString(undefined, options);
   headingTwo.textContent = `Posted: ${formattedDate}`;
   postContainer.appendChild(headingTwo);
-
-  // const headingThree = document.createElement("h3");
-  // headingThree.textContent = `Updated: ${post.updated}`;
-  // postContainer.appendChild(headingThree);
 
   const postContent = document.createElement("div");
   postContent.classList.add("post-content");

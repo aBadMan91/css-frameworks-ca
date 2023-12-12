@@ -4,9 +4,6 @@ import { authFetch } from "../api/authFetch.mjs";
 // this function fetches the posts from the api
 export async function fetchUserPosts() {
   const { name } = load("profile");
-  // const profile = await getProfile(name);
-
-  // console.log(profile);
 
   const response = await authFetch(`https://api.noroff.dev/api/v1/social/profiles/${name}/posts`);
 
@@ -16,7 +13,6 @@ export async function fetchUserPosts() {
 
   const posts = await response.json();
 
-  // this is the container for the posts
   const postContainer = document.getElementById("post-container");
   posts.forEach((post) => {
     const postHtml = createHtml(post);

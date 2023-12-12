@@ -4,10 +4,11 @@ import { authFetch } from "../authFetch.mjs";
 
 const action = "/posts";
 
+// THis function is used to get all posts
 export async function getPosts(sort = "newest") {
   let updatePostURL = `${API_SOCIAL_URL}${action}?_author=true&_comments=true&_reactions=true`;
 
-  // Add sorting
+  // this checks if the sort is newest or oldest and changes the url accordingly
   if (sort === "newest") {
     updatePostURL += "&sort=updated&sortOrder=desc";
   } else if (sort === "oldest") {
@@ -19,19 +20,12 @@ export async function getPosts(sort = "newest") {
   return await response.json();
 }
 
-// export async function getPosts() {
-//   const updatePostURL = `${API_SOCIAL_URL}${action}?_author=true&_comments=true&_reactions=true`;
-
-//   const response = await authFetch(updatePostURL);
-
-//   return await response.json();
-// }
-
+// This function is used to get a single post
 export async function getPost(id) {
   if (!id) {
     throw new Error("Get requires a postID");
   }
-  // const getPostURL = `${API_SOCIAL_URL}${action}/${id}`;
+
   const getPostURL = `${API_SOCIAL_URL}${action}/${id}?_author=true&_comments=true&_reactions=true`;
 
   const response = await authFetch(getPostURL);

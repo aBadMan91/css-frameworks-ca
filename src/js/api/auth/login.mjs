@@ -4,6 +4,7 @@ import * as storage from "../../storage/index.mjs";
 const action = "/auth/login";
 const method = "post";
 
+// This function is used to login a user
 export async function login(profile) {
   const loginURL = API_SOCIAL_URL + action;
   const body = JSON.stringify(profile);

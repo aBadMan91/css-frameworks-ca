@@ -2,6 +2,7 @@ import { getProfile, updateProfile } from "../api/profiles/index.mjs";
 
 import { load } from "../storage/index.mjs";
 
+// This function fetches the current profile from the local storage and adds an event listener to the edit profile form
 export async function setUpdateProfileListener() {
   const form = document.querySelector("#editProfile");
 
