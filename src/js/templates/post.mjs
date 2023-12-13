@@ -40,13 +40,6 @@ export function postTemplate(postData) {
 
   post.append(link);
 
-  // Add a button to view the console log, will remove later
-  const button = document.createElement("button");
-  button.innerText = "View Console log";
-  post.append(button);
-
-  button.addEventListener("click", () => console.log(postData));
-
   return post;
 }
 

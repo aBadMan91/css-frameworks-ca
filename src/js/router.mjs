@@ -1,5 +1,6 @@
 import * as listeners from "./handlers/index.mjs";
 
+// router function to handle different routes and sets up event listeners based on the current URL path
 export default function router() {
   const path = location.pathname;
 

@@ -13,6 +13,7 @@ document.title = title;
 const url = `${API_SOCIAL_URL}/posts/${id}?_author=true&_comments=true&_reactions=true`;
 console.log(url);
 
+// This function will get the post data and call the createPostHtml function
 async function viewPost() {
   const postData = await getPost(id);
 
@@ -21,6 +22,7 @@ async function viewPost() {
 
 viewPost();
 
+// This function will create the HTML for the post
 export function createPostHtml(post) {
   const heading = document.createElement("h1");
   heading.textContent = `${post.title}`;

@@ -5,6 +5,7 @@ import { authFetch } from "../authFetch.mjs";
 const action = "/profiles";
 const method = "put";
 
+// this function will update a profile
 export async function updateProfile(profileData) {
   if (!profileData.name) {
     throw new Error("Update requires a name");

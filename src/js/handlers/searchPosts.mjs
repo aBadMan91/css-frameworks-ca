@@ -19,7 +19,7 @@ const searchInput = document.querySelector("#search");
 
 if (searchForm) {
   searchForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the form from submitting and causing a page refresh
+    event.preventDefault();
     const searchTerm = searchInput.value;
     window.location.href = `/posts/?search=${encodeURIComponent(searchTerm)}`;
   });
