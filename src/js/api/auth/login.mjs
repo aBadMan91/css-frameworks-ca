@@ -17,11 +17,15 @@ export async function login(profile) {
     body,
   });
 
+  if (!response.ok) {
+    throw new Error(`Login failed: ${response.status}`);
+  }
+
   const { accessToken, ...user } = await response.json();
 
   storage.save("token", accessToken);
 
   storage.save("profile", user);
 
-  alert("You are now logged in");
+  window.location.href = "/profile/";
 }

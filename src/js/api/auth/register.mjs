@@ -16,7 +16,13 @@ export async function register(profile) {
     body,
   });
 
+  if (!response.ok) {
+    throw new Error(`Registration failed: ${response.status}`);
+  }
+
   const result = await response.json();
-  alert("You are now registered");
+
+  window.location.href = "/login/";
+
   return result;
 }

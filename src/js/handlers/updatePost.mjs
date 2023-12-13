@@ -30,17 +30,26 @@ export async function setUpdatePostFormListener() {
       post.id = id;
 
       // Send it to the API and let the user know it was updated
-      await updatePost(post);
-      window.alert("The post has been updated.");
+      try {
+        await updatePost(post);
+        alert("The post has been updated.");
+        window.location.href = "/profile/";
+      } catch (error) {
+        alert(error.message);
+      }
     });
 
     // Adds the posibility to delete a post and confirm and alert message before redirecting to the home page
     deleteButton.addEventListener("click", async () => {
       const confirmation = window.confirm("Are you sure you want to delete this post?");
       if (confirmation) {
-        await removePost(id);
-        window.alert("The post has been deleted.");
-        window.location.href = "/posts";
+        try {
+          await removePost(id);
+          alert("The post has been deleted.");
+          window.location.href = "/profile/";
+        } catch (error) {
+          alert(error.message);
+        }
       }
     });
   }

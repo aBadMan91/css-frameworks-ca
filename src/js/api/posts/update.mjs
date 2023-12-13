@@ -24,5 +24,9 @@ export async function updatePost(postData) {
     body: JSON.stringify(postData),
   });
 
+  if (!response.ok) {
+    throw new Error(`Update post failed: ${response.status}`);
+  }
+
   return await response.json();
 }

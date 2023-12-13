@@ -1,5 +1,6 @@
 import { createPost } from "../api/posts/index.mjs";
 
+// This function is used to create a post
 export function setCreatePostFormListener() {
   const form = document.querySelector("#createPost");
 
@@ -10,11 +11,14 @@ export function setCreatePostFormListener() {
       const formData = new FormData(form);
       const post = Object.fromEntries(formData.entries());
 
-      // Send it to the API and get the new post's ID
-      const newPost = await createPost(post);
+      try {
+        // Send it to the API and get the new post's ID
+        const newPost = await createPost(post);
 
-      // Redirect to the new post's page
-      window.location.href = `/post/?=id${newPost.id}`;
+        window.location.href = `/post/?id=${newPost.id}`;
+      } catch (error) {
+        alert(error.message);
+      }
     });
   }
 }

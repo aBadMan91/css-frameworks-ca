@@ -17,5 +17,9 @@ export async function removePost(id) {
     method,
   });
 
+  if (!response.ok) {
+    throw new Error(`An error occurred while deleting the post: ${response.status}`);
+  }
+
   return await response.json();
 }

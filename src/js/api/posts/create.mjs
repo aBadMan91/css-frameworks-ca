@@ -20,5 +20,9 @@ export async function createPost(postData) {
     body: JSON.stringify(postData),
   });
 
+  if (!response.ok) {
+    throw new Error(`An error occurred while creating the post: ${response.status}`);
+  }
+
   return await response.json();
 }

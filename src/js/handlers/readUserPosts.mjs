@@ -3,23 +3,27 @@ import { authFetch } from "../api/authFetch.mjs";
 
 // this function fetches the posts from the api
 export async function fetchUserPosts() {
-  const { name } = load("profile");
+  try {
+    const { name } = load("profile");
 
-  const response = await authFetch(`https://api.noroff.dev/api/v1/social/profiles/${name}/posts`);
+    const response = await authFetch(`https://api.noroff.dev/api/v1/social/profiles/${name}/posts`);
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch user posts: ${response.status}`);
+    }
+
+    const posts = await response.json();
+
+    const postContainer = document.getElementById("post-container");
+    posts.forEach((post) => {
+      const postHtml = createHtml(post);
+      postContainer.appendChild(postHtml);
+    });
+
+    return posts;
+  } catch (error) {
+    alert(error.message);
   }
-
-  const posts = await response.json();
-
-  const postContainer = document.getElementById("post-container");
-  posts.forEach((post) => {
-    const postHtml = createHtml(post);
-    postContainer.appendChild(postHtml);
-  });
-
-  return posts;
 }
 
 fetchUserPosts();

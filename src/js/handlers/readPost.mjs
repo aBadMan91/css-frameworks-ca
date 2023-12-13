@@ -15,14 +15,13 @@ console.log(url);
 
 async function viewPost() {
   const postData = await getPost(id);
-  console.log(postData);
 
-  createHtml(postData);
+  createPostHtml(postData);
 }
 
 viewPost();
 
-export function createHtml(post) {
+export function createPostHtml(post) {
   const heading = document.createElement("h1");
   heading.textContent = `${post.title}`;
   postContainer.appendChild(heading);

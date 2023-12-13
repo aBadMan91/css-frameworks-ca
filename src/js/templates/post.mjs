@@ -26,9 +26,6 @@ export function postTemplate(postData) {
   const options = { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" };
   const formattedDate = date.toLocaleString(undefined, options);
   text2.innerText = `Posted: ${formattedDate}`;
-  // const date = new Date(postData.created);
-  // const formattedDate = date.toLocaleDateString();
-  // text2.innerText = `Posted: ${formattedDate}`;
 
   cardBody.append(title, text1, text2);
   link.append(cardBody);
